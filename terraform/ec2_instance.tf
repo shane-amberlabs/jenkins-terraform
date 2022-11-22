@@ -9,7 +9,7 @@ resource "aws_instance" "ubuntu_ec2" {
   key_name      = aws_key_pair.ubuntu.key_name
   ami           = "ami-097a2df4ac947655f"
   instance_type = "t2.micro"
-  subnet_id = aws_subnet.public.id
+  subnet_id     = aws_subnet.public.id
 
   tags = {
     Name = "Jenkins-EC2"

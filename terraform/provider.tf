@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "jenkins-terraform-saw554"
-    key            = "jenkins-terraform-saw554.tfstate"
-    dynamodb_table = "jenkins-terraform-saw554"
+    bucket         = "saw554-tfstate-s3"
+    key            = "saw554-tfstate-s3.tfstate"
+    dynamodb_table = "saw554-tfstate-s3"
     encrypt        = true
     region         = "us-east-1"
   }
