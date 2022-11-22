@@ -3,9 +3,9 @@
 set -e
 set -v
 
-S3_NAME=jenkins-terraform-saw554
-DYNAMODB_NAME=jenkins-terraform-saw554
-REGION=eu-east-1
+S3_NAME=saw554-tfstate-s3
+DYNAMODB_NAME=saw554-tfstate-dynamodb
+REGION=us-east-1
 
 aws s3api delete-bucket --bucket $S3_NAME --region $REGION
 
