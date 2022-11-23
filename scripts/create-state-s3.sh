@@ -3,9 +3,9 @@
 set -e
 set -v
 
-S3_NAME=saw554-tfstate-s3
-DYNAMODB_NAME=saw554-tfstate-dynamodb
-REGION=us-east-1
+S3_NAME=jenkins-tf-tfstate-s3
+DYNAMODB_NAME=jenkins-tf-dynamodb
+REGION=us-east-2
 
 aws s3 mb s3://$S3_NAME --region $REGION
 
