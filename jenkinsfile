@@ -5,6 +5,7 @@ pipeline {
         string(name: 'environment', defaultValue: 'terraform', description: 'Workspace/environment file to use for deployment')
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
         booleanParam(name: 'destroy', defaultValue: false, description: 'Destroy Terraform build?')
+        booleanParam(name: 'privateKey', defaultValue: ' ', description: 'Private key to connect to the EC2')
 
     }
 
@@ -38,7 +39,7 @@ pipeline {
                 sh 'cd ./terraform && terraform init -input=false'
                 sh 'cd ./terraform && terraform workspace select ${environment} || terraform workspace new ${environment}'
 
-                sh "cd ./terraform && terraform plan -input=false -out tfplan "
+                sh "cd ./terraform && terraform plan -var region=${params.privateKey} -input=false -out tfplan "
                 sh 'cd ./terraform && terraform show -no-color tfplan > tfplan.txt'
             }
         }
