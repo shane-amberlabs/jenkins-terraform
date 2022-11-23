@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket         = "saw554-tfstate-s3"
-    key            = "saw554-tfstate-s3.tfstate"
-    dynamodb_table = "saw554-tfstate-s3"
+    bucket         = "jenkins-tf-tfstate-s3"
+    key            = "jenkins-tf-tfstate-s3.tfstate"
+    dynamodb_table = "jenkins-tf-dynamodb"
     encrypt        = true
-    region         = "us-east-1"
+    region         = "us-east-2"
   }
 
   required_providers {
