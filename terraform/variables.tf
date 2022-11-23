@@ -6,6 +6,3 @@ variable "name" {
   default = "jenkins"
 }
 
-variable "privateKey" {
-  
-}

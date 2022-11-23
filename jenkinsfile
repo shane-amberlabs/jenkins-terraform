@@ -39,7 +39,7 @@ pipeline {
                 sh 'cd ./terraform && terraform init -input=false'
                 sh 'cd ./terraform && terraform workspace select ${environment} || terraform workspace new ${environment}'
 
-                sh "cd ./terraform && terraform plan -var region=${params.privateKey} -input=false -out tfplan "
+                sh "cd ./terraform && terraform plan -input=false -out tfplan "
                 sh 'cd ./terraform && terraform show -no-color tfplan > tfplan.txt'
             }
         }
