@@ -35,13 +35,11 @@ pipeline {
             }
             
             steps {
-                sh 'cd ./terraform && ls -la'
-                sh 'cd terraform'
-                sh 'terraform init -input=false'
-                sh 'terraform workspace select ${environment} || terraform workspace new ${environment}'
+                sh 'cd ./terraform && terraform init -input=false'
+                sh 'cd ./terraform && terraform workspace select ${environment} || terraform workspace new ${environment}'
 
-                sh "terraform plan -input=false -out tfplan "
-                sh 'terraform show -no-color tfplan > tfplan.txt'
+                sh "cd ./terraform && terraform plan -input=false -out tfplan "
+                sh 'cd ./terraform && terraform show -no-color tfplan > tfplan.txt'
             }
         }
         stage('Approval') {
@@ -74,8 +72,7 @@ pipeline {
             }
             
             steps {
-                sh 'cd terraform'
-                sh "terraform apply -input=false tfplan"
+                sh "cd ./terraform && terraform apply -input=false tfplan"
             }
         }
         
@@ -85,8 +82,7 @@ pipeline {
             }
         
         steps {
-            sh 'cd terraform'
-            sh "terraform destroy --auto-approve"
+            sh "cd ./terraform && terraform destroy --auto-approve"
         }
     }
 
