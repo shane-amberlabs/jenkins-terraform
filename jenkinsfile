@@ -36,7 +36,8 @@ pipeline {
             
             steps {
                 sh 'ls -la'
-                sh 'pwd'
+                sh 'cd ./terraform'
+                sh 'ls -la'
                 sh 'cd terraform'
                 sh 'terraform init -input=false'
                 sh 'terraform workspace select ${environment} || terraform workspace new ${environment}'
