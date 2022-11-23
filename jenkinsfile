@@ -18,12 +18,15 @@ pipeline {
     stages {
         stage('checkout') {
              steps {
-                 script{
-                        {
-                            git "https://github.com/shane-amberlabs/jenkins-terraform.git"
-                        }
-                    }
-                }
+                sh """ 
+                if [ ! -d jenkins-terraform ]
+                then
+                    git clone https://github.com/shane-amberlabs/jenkins-terraform.git
+                else
+                    cd jenkins-terraform
+                    git pull https://github.com/shane-amberlabs/jenkins-terraform.git
+                fi
+                """
             }
 
         stage('Plan') {
