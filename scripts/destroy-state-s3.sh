@@ -9,4 +9,4 @@ REGION=us-east-2
 
 aws s3api delete-bucket --bucket $S3_NAME --region $REGION
 
-# aws dynamodb delete-table --table-name $DYNAMODB_NAME
+aws dynamodb delete-table --table-name $DYNAMODB_NAME

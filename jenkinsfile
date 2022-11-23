@@ -17,14 +17,11 @@ pipeline {
 
     stages {
         stage('checkout') {
-            steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git "https://github.com/shane-amberlabs/jenkins-terraform.git"
-                        }
-                    }
-                }
+             steps {
+                sh 'git clone https://github.com/shane-amberlabs/jenkins-terraform.git'
+                sh 'ls -la'
+                sh 'pwd'
+            }
             }
 
         stage('Plan') {
