@@ -28,6 +28,7 @@ pipeline {
                 fi
                 """
             }
+        }
 
         stage('Plan') {
             when {
